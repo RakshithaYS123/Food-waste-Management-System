@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{%block content%}
+<center><h1>Charity SignUp</h1>
+<br>
+<br>
+<form  action="{{url_for("signup")}}" method=post class="form-horizontal">
+  <div class="form-group">
+      <label for="inputName" class="control-label col-xs-2">Charity Mail</label>
+      <div class="col-xs-10">
+          <input type="text" class="form-control" id="inputName" placeholder="Email"  name="emailid">
+      </div>
+  </div>
+  <div class="form-group">
+      <label for="UserName" class="control-label col-xs-2">Charity Name</label>
+      <div class="col-xs-10">
+          <input type="text" class="form-control" id="inputName" placeholder="UserName"  name="username">
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="PhoneNO" class="control-label col-xs-2">PhoneNo</label>
+    <div class="col-xs-10">
+        <input type="text" class="form-control" id="inputMark" placeholder="PhoneNO"  name="phno">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Address" class="control-label col-xs-2">Address</label>
+    <div class="col-xs-10">
+        <textarea name="address" rows="5" cols="130"
+        ></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="Password" class="control-label col-xs-2">Password</label>
+      <div class="col-xs-10">
+          <input type="password" class="form-control" id="PassWord" placeholder="PassWord"  name="password">
+      </div>
+  </div>
+  
+  <div class="form-group">
+          <button type="submit" class="btn btn-primary" name="add" value="add">SignUp</button>
+  </div>
+ </form>
+</center>
+
+{% endblock %}

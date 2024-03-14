@@ -1,0 +1,71 @@
+{% extends "adminbase.html" %}
+{% block content %}
+<center>
+    <h1>
+        Update Medicine
+    </h1>
+    <br>
+    <form action="{{ url_for('update') }}" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="facName" class="control-label col-xs-2">Medicine Name</label>
+            <div class="col-xs-10">
+            	<select name="medicine" id="" class="form-control">
+               {% for i in names %}
+               <option value="{{i[0]}}">{{i[0]}}</option>
+               {% endfor %}
+              </select>
+        	</div>
+        </div>
+    <br>
+    <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Select Medicine</button>
+        </div>
+    </form>
+
+{% if post %}
+    <form action="{{ url_for('updateMedicine') }}" method="POST">
+<table id="tables">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Distributor</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Manufactured Date</th>
+      <th>Expired Date</th>
+    </tr>
+    <tr>
+        <td>{{res[0][0]}}</td>
+        <td>{{res[0][1]}}</td>
+        <td>
+          {{res[0][2]}}
+        </td>
+        <td>
+            <input type="text" name="quantity" id=""  value="{{res[0][3]}}"" placeholder="{{res[0][3]}}" class="form-control">    
+        </td>        
+        
+        <td>
+            <input type="text" name="price" id="" placeholder="{{res[0][4]}}" value="{{res[0][4]}}" class="form-control">    
+        </td>    
+        
+        <td>
+            <input type="date" name="manDate" id="" placeholder="{{res[0][5]}}" value="{{res[0][5]}}" class="form-control">    
+        </td>    
+        
+        <td>
+            <input type="date" name="expDate" id="" placeholder="{{res[0][6]}}" value="{{res[0][6]}}" class="form-control">    
+        </td>    
+        <input type="hidden" name="medName" value={{res[0][1]}}>
+        
+    </tr>
+   </table>
+   <div class="form-group">
+    <button type="submit" class="btn btn-primary" name="add" value="add">Update</button>
+</div>
+
+   </form>
+   {% endif %}
+
+</center>
+{% endblock %}

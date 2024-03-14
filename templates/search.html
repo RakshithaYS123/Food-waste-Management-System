@@ -1,0 +1,52 @@
+{% extends "adminbase.html" %}
+{% block content %}
+<center>
+    <h1>
+        Search Medicine
+    </h1>
+    <br>
+    <form action="{{ url_for('search') }}" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="facData" class="control-label col-xs-2">Medical Data</label>
+            <div class="col-xs-10">
+                <input type="text" class="form-control" placeholder="Data" name="data">
+        	</div>
+        </div>
+    <br>
+    <br>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Select Medicine</button>
+        </div>
+    </form>
+
+{% if post %}
+<table id="tables">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Distributor</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Manufactured Date</th>
+      <th>Expired Date</th>
+      <th>DateTime</th>
+    </tr>
+    {% for i in res %}
+    <tr>
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}}</td>        
+        <td>{{i[4]}}</td>
+        <td>{{i[5]}}</td>
+        <td>{{i[6]}}</td>
+        <td>{{i[7]}}</td>        
+    </tr>
+    {% endfor %}
+   </table>
+   {% endif %}
+
+</center>
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "adminbase.html" %} {% block content %}
+<center>
+  <h1>Delete FoodItem</h1>
+  <br />
+  <form action="{{ url_for('delete') }}" method="post" class="form-horizontal">
+    <div class="form-group">
+      <label for="facName" class="control-label col-xs-2">Medicine Name</label>
+      <div class="col-xs-10">
+        <select name="medicine" id="" class="form-control">
+          {% for i in names %}
+          <option value="{{i[0]}}">{{i[0]}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Select FoodItems</button>
+    </div>
+  </form>
+
+  {% if post %}
+  <form action="{{ url_for('deleteMedicine') }}" method="POST">
+    <table id="tables">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Quantity</th>
+      </tr>
+      <tr>
+        <td>{{res[0][0]}}</td>
+        <td>{{res[0][1]}}</td>
+        <td>{{res[0][2]}}</td>
+        <input type="hidden" name="medName" value="{{res[0][1]}}" />
+      </tr>
+    </table>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" name="add" value="add">
+        Delete
+      </button>
+    </div>
+  </form>
+  {% endif %}
+</center>
+{% endblock %}

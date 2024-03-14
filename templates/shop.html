@@ -1,0 +1,61 @@
+{% extends "customerbase.html" %} {% block content %}
+<center>
+  <h1>Request Food</h1>
+  <br />
+  <form action="{{ url_for('Shop') }}" method="post" class="form-horizontal">
+    <div class="form-group">
+      <label for="" class="control-label col-xs-2">Food Name</label>
+      <div class="col-xs-10">
+        <select name="medicine" id="" class="form-control">
+          {% for i in names %}
+          <option value="{{i[0]}}">{{i[0]}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <br />
+    <div class="form-group">
+      <label for="" class="control-label col-xs-2">Quantity</label>
+      <div class="col-xs-10">
+        <input
+          type="text"
+          class="form-control"
+          id="inputMark"
+          placeholder="Quantity"
+          name="quantity"
+        />
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Select Food</button>
+    </div>
+  </form>
+  {% if post %}
+  <form action="{{ url_for('buy') }}" method="POST">
+    <table id="tables">
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+      </tr>
+      {%for i in res%}
+      <tr>
+        <td>{{i[0]}}</td>
+        <input type="hidden" name="medName" value="{{i[0]}}" />
+        <td>{{i[1]}}</td>
+        <input type="hidden" name="quantity" value="{{i[1]}}" />
+        <!-- <input type="hidden" name="price" value="{{i[2]}}" /> -->
+      </tr>
+      {% endfor %}
+    </table>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" name="add" value="add">
+        Request
+      </button>
+    </div>
+  </form>
+  {% endif %}
+</center>
+{% endblock %}

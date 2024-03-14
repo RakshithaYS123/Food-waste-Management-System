@@ -1,0 +1,101 @@
+<!-- Home page of J's Student Datatbase using twitter bootstrap-->
+<!DOCTYPE html>
+<html>
+<style>
+ .topnav {
+  background-color:white;
+  color: black;
+  /* overflow: hidden; */
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: right;
+  color:black;
+  text-align: match-parent;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnavlogo a{
+  float: left;
+  color: aqua;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#tables {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tables td, #tables th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tables tr:nth-child(even){background-color: #f2f2f2;}
+
+#tables tr:hover {background-color: #ddd;}
+
+#tables th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+body {
+//  background-image:url('static/images/logo.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+</style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="A Simple faculty Database">
+    <meta name="author" content="Jacob Jose">
+    <title>Food Waste Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename="bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='blog.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', filename="bootstrap/css/bootstrap-theme.min.css") }}" rel="stylesheet" />
+  </head>
+  <body >
+    <div class="container">
+    <div navbar-header>
+
+      <div class="container">
+        <nav class="navbar navbar-fixed-top" data-spy="affix"  id="navbar">
+        <div class="topnavlogo">
+            <a href="{{url_for('customer')}}"> <img src="{{url_for('static', filename='images/logo.png')}}" alt="" width="75px" height="75px"> </a>
+        </div>
+       <div class="topnav">
+        <br><br>
+        <a href="{{ url_for('logout') }}" >Log Out </a>
+       <a href="{{ url_for('Shop') }}" >Request </a>
+        <a href="{{ url_for('CustTrans')}}">History</a>
+       </div>
+        </nav><!-- /.container-fluid -->
+      </div>
+
+      {% block content %}
+     
+      {% endblock %}
+  </body>
+</html>
